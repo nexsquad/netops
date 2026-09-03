@@ -2,15 +2,15 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>پروفایل مهندسی و راه‌کارهای هوشمند</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>آقای مهندس اشترخانی | راه‌کارهای زیرساخت IT و هوش مصنوعی</title>
   
   <!-- فونت وزیرمتن -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   
-  <!-- آیکون‌های وکتور Lucide -->
+  <!-- آیکون‌ها -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
@@ -20,9 +20,9 @@
       --card-inner: rgba(51, 65, 85, 0.45);
       --card-border: rgba(148, 163, 184, 0.15);
       --card-border-hover: rgba(56, 189, 248, 0.4);
-      --primary: #38bdf8;       /* آبی فیروزه‌ای */
-      --secondary: #a855f7;     /* بنفش هوش مصنوعی */
-      --accent: #10b981;        /* سبز راداری */
+      --primary: #38bdf8;
+      --secondary: #a855f7;
+      --accent: #10b981;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --text-sub: #cbd5e1;
@@ -44,64 +44,55 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 30px 16px 60px 16px;
+      padding: 24px 16px 50px 16px;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* هاله‌های نوری شناور پس‌زمینه */
     .glow-shape {
       position: fixed;
       border-radius: 50%;
       filter: blur(90px);
       pointer-events: none;
       z-index: 0;
-      opacity: 0.4;
+      opacity: 0.35;
     }
     .glow-1 {
-      top: -100px;
-      right: 10%;
-      width: 450px;
-      height: 450px;
+      top: -80px;
+      right: 5%;
+      width: 350px;
+      height: 350px;
       background: rgba(56, 189, 248, 0.25);
     }
     .glow-2 {
-      bottom: -50px;
-      left: 10%;
-      width: 400px;
-      height: 400px;
+      bottom: -60px;
+      left: 5%;
+      width: 320px;
+      height: 320px;
       background: rgba(168, 85, 247, 0.2);
     }
 
-    /* کانتینر اصلی با چیدمان ۲ ستونه */
     .main-wrapper {
       width: 100%;
-      max-width: 1080px;
+      max-width: 1050px;
       display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 24px;
+      grid-template-columns: 320px 1fr;
+      gap: 20px;
       position: relative;
       z-index: 1;
     }
 
-    /* کارت پایه شیشه‌ای */
     .glass-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 24px;
+      border-radius: 22px;
+      padding: 22px;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-    .glass-card:hover {
-      border-color: var(--card-border-hover);
-      box-shadow: 0 15px 35px rgba(56, 189, 248, 0.12);
-    }
-
-    /* ---------- انیمیشن راداری امواج دایره‌ای (Radar Pulse) ---------- */
+    /* امواج راداری */
     .radar-dot {
       position: relative;
       display: inline-block;
@@ -110,6 +101,10 @@
       min-width: 8px;
       background-color: var(--primary);
       border-radius: 50%;
+    }
+
+    .radar-dot.purple {
+      background-color: var(--secondary);
     }
 
     .radar-dot::before {
@@ -122,36 +117,20 @@
       border-radius: 50%;
       background-color: inherit;
       transform: translate(-50%, -50%);
-      animation: radar-wave 3s infinite cubic-bezier(0, 0.2, 0.8, 1);
-      z-index: 0;
+      animation: radar-wave 2.8s infinite cubic-bezier(0, 0.2, 0.8, 1);
     }
 
     @keyframes radar-wave {
-      0% {
-        width: 8px;
-        height: 8px;
-        opacity: 0.9;
-      }
-      70% {
-        width: 22px;
-        height: 22px;
-        opacity: 0;
-      }
-      100% {
-        width: 24px;
-        height: 24px;
-        opacity: 0;
-      }
+      0% { width: 8px; height: 8px; opacity: 0.9; }
+      70% { width: 20px; height: 20px; opacity: 0; }
+      100% { width: 22px; height: 22px; opacity: 0; }
     }
 
-    /* ---------- پنل سمت راست: مشخصات نماینده ---------- */
+    /* سایدبار اطلاعات مهندس */
     .sidebar-col {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      position: sticky;
-      top: 30px;
-      height: fit-content;
+      gap: 16px;
     }
 
     .profile-card {
@@ -159,10 +138,14 @@
     }
 
     .avatar-container {
-      position: relative;
       width: 110px;
       height: 110px;
-      margin: 0 auto 16px auto;
+      margin: 0 auto 14px auto;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+      overflow: hidden;
     }
 
     .avatar-img {
@@ -170,8 +153,8 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid rgba(56, 189, 248, 0.6);
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+      display: block;
+      background-color: #1e293b;
     }
 
     .rep-name {
@@ -182,36 +165,35 @@
     }
 
     .rep-role {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--primary);
       font-weight: 600;
       margin-bottom: 12px;
     }
 
     .rep-bio {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      line-height: 1.75;
-      margin-bottom: 20px;
-      text-align: center;
+      line-height: 1.7;
+      margin-bottom: 18px;
     }
 
     .contact-info-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 9px;
+      margin-bottom: 18px;
       text-align: right;
     }
 
     .contact-info-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 0.84rem;
+      gap: 10px;
+      font-size: 0.85rem;
       color: var(--text-sub);
       background: var(--card-inner);
-      padding: 10px 14px;
+      padding: 9px 12px;
       border-radius: 12px;
       border: 1px solid var(--card-border);
     }
@@ -222,11 +204,10 @@
       height: 18px;
     }
 
-    /* دکمه‌های اکشن */
     .sidebar-actions {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 9px;
     }
 
     .btn {
@@ -234,25 +215,20 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 12px 18px;
+      padding: 11px 16px;
       border-radius: 14px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
       border: none;
-      transition: all 0.2s ease;
+      transition: 0.2s;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, #0284c7, #0ea5e9);
       color: #ffffff;
-      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.35);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 6px 25px rgba(14, 165, 233, 0.5);
-      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.35);
     }
 
     .btn-vcard {
@@ -261,48 +237,16 @@
       color: var(--text-main);
     }
 
-    .btn-vcard:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--primary);
-    }
-
-    .social-bar {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .social-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--card-inner);
-      border: 1px solid var(--card-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: 0.2s;
-    }
-
-    .social-btn:hover {
-      color: var(--primary);
-      border-color: var(--primary);
-      transform: translateY(-3px);
-    }
-
-    /* ---------- ستون چپ: توانمندی‌ها و خدمات تیم ---------- */
+    /* ستون محتوا */
     .content-col {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
     .hero-banner {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(168, 85, 247, 0.08));
-      border: 1px solid rgba(56, 189, 248, 0.2);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(168, 85, 247, 0.08));
+      border: 1px solid rgba(56, 189, 248, 0.25);
     }
 
     .hero-badge {
@@ -312,166 +256,212 @@
       background: rgba(56, 189, 248, 0.12);
       border: 1px solid rgba(56, 189, 248, 0.3);
       color: var(--primary);
-      padding: 5px 14px;
+      padding: 5px 12px;
       border-radius: 100px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       margin-bottom: 12px;
     }
 
-    .hero-badge .radar-dot {
-      background-color: var(--accent);
-    }
-
     .hero-title {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       font-weight: 900;
-      line-height: 1.5;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, #ffffff, #cbd5e1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      line-height: 1.55;
+      margin-bottom: 8px;
+      color: #ffffff;
     }
 
     .hero-desc {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: var(--text-sub);
       line-height: 1.75;
     }
 
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
+    .skills-grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
     }
 
-    .section-title {
-      font-size: 1.1rem;
+    .skill-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .skill-panel.it-panel { border-top: 3px solid var(--primary); }
+    .skill-panel.ai-panel { border-top: 3px solid var(--secondary); }
+
+    .panel-headline {
+      font-size: 0.95rem;
       font-weight: 800;
       color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
+    .panel-chips {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .service-card {
+    .skill-interactive-btn {
       background: var(--card-inner);
       border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 16px 18px;
+      color: var(--text-sub);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 500;
       display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      transition: all 0.25s ease;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: right;
+      width: 100%;
+      line-height: 1.4;
     }
 
-    .service-card:hover {
-      background: rgba(51, 65, 85, 0.7);
-      border-color: rgba(56, 189, 248, 0.3);
-      transform: translateX(-4px);
+    .skill-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .service-icon-box {
-      width: 48px;
-      height: 48px;
-      min-width: 48px;
-      border-radius: 14px;
+    .hint-click {
+      color: var(--text-muted);
+      opacity: 0.8;
+      display: flex;
+      align-items: center;
+    }
+
+    /* پاپ‌آپ مودال (Modal) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(11, 15, 25, 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
     }
 
-    .icon-it { background: rgba(56, 189, 248, 0.15); color: var(--primary); }
-    .icon-ai { background: rgba(168, 85, 247, 0.15); color: var(--secondary); }
-    .icon-auto { background: rgba(16, 185, 129, 0.15); color: var(--accent); }
-
-    .service-info h3 {
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 5px;
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
     }
 
-    .service-info p {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      line-height: 1.6;
+    .modal-box {
+      background: #1e293b;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 440px;
+      padding: 22px;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
     }
 
-    /* مهارت‌ها و برچسب‌های تکنولوژی با رادار */
-    .skills-flex {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      direction: ltr;
-      justify-content: flex-end;
-    }
-
-    .skill-chip {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--card-border);
-      color: var(--text-sub);
-      padding: 7px 14px;
-      border-radius: 10px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: 0.2s;
-    }
-
-    .skill-chip:hover {
+    .modal-close-btn {
+      position: absolute;
+      top: 14px;
+      left: 14px;
       background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(56, 189, 248, 0.3);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
     }
 
-    /* ریسپانسیو موبایل */
+    .modal-icon-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .modal-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .modal-desc {
+      font-size: 0.86rem;
+      line-height: 1.7;
+      color: var(--text-sub);
+      margin-bottom: 14px;
+    }
+
+    .modal-details {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      color: var(--primary);
+      border-right: 3px solid var(--primary);
+    }
+
+    /* ریسپانسیو اختصاصی موبایل */
     @media (max-width: 860px) {
       .main-wrapper {
         grid-template-columns: 1fr;
         gap: 16px;
       }
-      .sidebar-col {
-        position: static;
+      .skills-grid-container {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- نورهای محیطی پس‌زمینه -->
   <div class="glow-shape glow-1"></div>
   <div class="glow-shape glow-2"></div>
 
   <div class="main-wrapper">
     
-    <!-- ================== پنل سمت راست: مشخصات و رزومه نماینده ================== -->
+    <!-- پنل سایدبار: مشخصات آقای مهندس اشترخانی -->
     <aside class="sidebar-col">
       <div class="glass-card profile-card">
         
-        <!-- تصویر نماینده (بدون نشانگر سبز رنگ) -->
         <div class="avatar-container">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="تصویر نماینده" class="avatar-img">
+          <img src="IMG_20260902_150038_981.jpg" alt="آقای مهندس اشترخانی" class="avatar-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&q=80'">
         </div>
 
-        <!-- نام و عنوان -->
-        <h2 class="rep-name">مهندس سهرابی</h2>
+        <h2 class="rep-name">آقای مهندس اشترخانی</h2>
         <div class="rep-role">نماینده ارشد فنی و توسعه زیرساخت</div>
         
-        <!-- بیوگرافی تمیز -->
         <p class="rep-bio">
-          متخصص معماری شبکه، راهکارهای تلفنی VoIP و هوشمندسازی فرآیندهای کسب‌وکار با سابقه اجرای بیش از ده‌ها پروژه موفق سازمانی.
+          متخصص معماری شبکه، راهکارهای تلفنی VoIP و هوشمندسازی فرآیندهای کسب‌وکار با سابقه اجرای ده‌ها پروژه موفق سازمانی.
         </p>
 
-        <!-- اطلاعات تماس مستقیم -->
         <div class="contact-info-list">
           <div class="contact-info-item">
             <i data-lucide="phone"></i>
@@ -487,133 +477,268 @@
           </div>
         </div>
 
-        <!-- دکمه‌های اقدام -->
         <div class="sidebar-actions">
           <a href="tel:09120000000" class="btn btn-primary">
-            <i data-lucide="phone-call" style="width: 18px; height: 18px;"></i>
+            <i data-lucide="phone-call" style="width: 17px; height: 17px;"></i>
             برقراری تماس مستقیم
           </a>
           
           <button onclick="downloadVCard()" class="btn btn-vcard">
-            <i data-lucide="user-plus" style="width: 18px; height: 18px;"></i>
+            <i data-lucide="user-plus" style="width: 17px; height: 17px;"></i>
             ذخیره مخاطب در گوشی
           </button>
-        </div>
-
-        <!-- شبکه‌های اجتماعی -->
-        <div class="social-bar">
-          <a href="https://t.me/yourusername" target="_blank" class="social-btn" title="تلگرام">
-            <i data-lucide="send" style="width: 18px; height: 18px;"></i>
-          </a>
-          <a href="https://wa.me/989120000000" target="_blank" class="social-btn" title="واتساپ">
-            <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
-          </a>
-          <a href="https://linkedin.com" target="_blank" class="social-btn" title="لینکدین">
-            <i data-lucide="linkedin" style="width: 18px; height: 18px;"></i>
-          </a>
         </div>
 
       </div>
     </aside>
 
-    <!-- ================== ستون اصلی (چپ): توانمندی‌ها و خدمات تیم ================== -->
+    <!-- ستون اصلی: توانمندی‌ها -->
     <main class="content-col">
       
-      <!-- بنر اصلی تیم -->
       <div class="glass-card hero-banner">
         <div class="hero-badge">
           <span class="radar-dot"></span>
           تیم راه‌کارهای یکپارچه دیجیتال
         </div>
-        <h1 class="hero-title">از زیرساخت شبکه تا اتوماسیون هوشمند با AI</h1>
+        <h1 class="hero-title">از مهندسی زیرساخت تا خلق محتوا با هوش مصنوعی</h1>
         <p class="hero-desc">
-          ما چالش‌های کندی، قطعی شبکه و وظایف تکراری پرسنل شما را با زیرساخت‌های پایدار، هوش مصنوعی و اتوماسیون خودکار به فرصتی برای رشد پایدار تبدیل می‌کنیم.
+          ما پایداری و امنیت شبکه شرکت شما را تضمین کرده و همزمان با ابزارهای نوین هوش مصنوعی، فرایند بازاریابی، تولید محتوا و اتوماسیون شما را دگرگون می‌کنیم.
         </p>
       </div>
 
-      <!-- کارت خدمات و توانمندی‌ها -->
-      <div class="glass-card">
-        <div class="section-header">
-          <div class="section-title">
-            <i data-lucide="boxes" style="width: 22px; height: 22px; color: var(--primary);"></i>
-            خدمات و توانمندی‌های تخصصی
+      <!-- شبکه پنل‌های تخصصی -->
+      <div class="skills-grid-container">
+        
+        <!-- پنل IT -->
+        <div class="skill-panel it-panel">
+          <div class="panel-headline">
+            <i data-lucide="server" style="width: 18px; height: 18px; color: var(--primary);"></i>
+            زیرساخت و مهندسی شبکه (Enterprise IT)
+          </div>
+
+          <div class="panel-chips">
+            <button class="skill-interactive-btn" onclick="openSkillModal('infra')">
+              <span class="skill-label">
+                <span class="radar-dot"></span>
+                راه‌اندازی زیرساخت و پسیو شبکه
+              </span>
+              <span class="hint-click"><i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i></span>
+            </button>
+
+            <button class="skill-interactive-btn" onclick="openSkillModal('routing')">
+              <span class="skill-label">
+                <span class="radar-dot"></span>
+                کانفیگ پیشرفته سوئیچینگ و روتینگ
+              </span>
+              <span class="hint-click"><i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i></span>
+            </button>
+
+            <button class="skill-interactive-btn" onclick="openSkillModal('firewall')">
+              <span class="skill-label">
+                <span class="radar-dot"></span>
+                امنیت شبکه و فایروال (UTM/NGFW)
+              </span>
+              <span class="hint-click"><i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i></span>
+            </button>
+
+            <button class="skill-interactive-btn" onclick="openSkillModal('storage')">
+              <span class="skill-label">
+                <span class="radar-dot"></span>
+                راهکارهای استوریج و پشتیبان‌گیری
+              </span>
+              <span class="hint-click"><i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i></span>
+            </button>
+
+            <button class="skill-interactive-btn" onclick="openSkillModal('voip')">
+              <span class="skill-label">
+                <span class="radar-dot"></span>
+                مراکز تلفنی نوین VoIP و سانترال ابری
+              </span>
+              <span class="hint-click"><i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i></span>
+            </button>
           </div>
         </div>
 
-        <div class="services-grid">
-          
-          <!-- سرویس ۱: شبکه و VoIP -->
-          <div class="service-card">
-            <div class="service-icon-box icon-it">
-              <i data-lucide="network" style="width: 24px; height: 24px;"></i>
-            </div>
-            <div class="service-info">
-              <h3>زیرساخت شبکه، مانیتورینگ و VoIP</h3>
-              <p>طراحی و کانفیگ مراکز تلفنی مدرن، مانیتورینگ ۲۴/۷ سرورها (PRTG)، و تامین امنیت شبکه با فایروال‌های پیشرفته.</p>
-            </div>
+        <!-- پنل هوش مصنوعی -->
+        <div class="skill-panel ai-panel">
+          <div class="panel-headline">
+            <i data-lucide="sparkles" style="width: 18px; height: 18px; color: var(--secondary);"></i>
+            خلق محتوا و اتوماسیون هوشمند (Creative AI)
           </div>
 
-          <!-- سرویس ۲: اتوماسیون -->
-          <div class="service-card">
-            <div class="service-icon-box icon-auto">
-              <i data-lucide="zap" style="width: 24px; height: 24px;"></i>
-            </div>
-            <div class="service-info">
-              <h3>اتوماسیون فرآیندهای سازمانی (Workflow Automation)</h3>
-              <p>اتصال خودکار نرم‌افزارها با n8n و وب‌هوک‌ها؛ ارسال گزارش‌ها، فاکتورها و پاسخگویی خودکار بدون دخالت نیروی انسانی.</p>
-            </div>
-          </div>
+          <div class="panel-chips">
+            <button class="skill-interactive-btn" onclick="openSkillModal('animation')">
+              <span class="skill-label">
+                <span class="radar-dot purple"></span>
+                طراحی انیمیشن‌های ۲D و ۳D
+              </span>
+              <span class="hint-click"><i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i></span>
+            </button>
 
-          <!-- سرویس ۳: هوش مصنوعی -->
-          <div class="service-card">
-            <div class="service-icon-box icon-ai">
-              <i data-lucide="bot" style="width: 24px; height: 24px;"></i>
-            </div>
-            <div class="service-info">
-              <h3>پیاده‌سازی هوش مصنوعی و چت‌بات‌های شرکتی</h3>
-              <p>طراحی دستیارهای هوشمند مسلط به داده‌های اختصاصی شرکت شما برای پاسخ‌گویی به مشتریان و تحلیل داده‌های کاری.</p>
-            </div>
-          </div>
+            <button class="skill-interactive-btn" onclick="openSkillModal('teaser')">
+              <span class="skill-label">
+                <span class="radar-dot purple"></span>
+                تدوین تیزرهای تبلیغاتی و معرفی محصول
+              </span>
+              <span class="hint-click"><i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i></span>
+            </button>
 
+            <button class="skill-interactive-btn" onclick="openSkillModal('logo')">
+              <span class="skill-label">
+                <span class="radar-dot purple"></span>
+                طراحی لوگو و هویت بصری مدرن
+              </span>
+              <span class="hint-click"><i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i></span>
+            </button>
+
+            <button class="skill-interactive-btn" onclick="openSkillModal('ai-art')">
+              <span class="skill-label">
+                <span class="radar-dot purple"></span>
+                خلق تصاویر اختصاصی با ابزارهای AI
+              </span>
+              <span class="hint-click"><i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i></span>
+            </button>
+
+            <button class="skill-interactive-btn" onclick="openSkillModal('copywriting')">
+              <span class="skill-label">
+                <span class="radar-dot purple"></span>
+                تولید محتوای متنی تخصصی، بلاگ و سئو
+              </span>
+              <span class="hint-click"><i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i></span>
+            </button>
+          </div>
         </div>
-      </div>
 
-      <!-- کارت ابزارها با افکت راداری روی هر مهارت -->
-      <div class="glass-card">
-        <div class="section-header">
-          <div class="section-title">
-            <i data-lucide="code-2" style="width: 20px; height: 20px; color: var(--secondary);"></i>
-            فناوری‌ها و پلتفرم‌ها
-          </div>
-        </div>
-
-        <div class="skills-flex">
-          <div class="skill-chip">Asterisk / FreePBX <span class="radar-dot"></span></div>
-          <div class="skill-chip">n8n Automations <span class="radar-dot"></span></div>
-          <div class="skill-chip">OpenAI & LLM Integration <span class="radar-dot"></span></div>
-          <div class="skill-chip">Cisco & Mikrotik <span class="radar-dot"></span></div>
-          <div class="skill-chip">FortiGate Security <span class="radar-dot"></span></div>
-          <div class="skill-chip">PRTG & Zabbix <span class="radar-dot"></span></div>
-          <div class="skill-chip">Linux & Windows Server <span class="radar-dot"></span></div>
-          <div class="skill-chip">REST APIs & Webhooks <span class="radar-dot"></span></div>
-        </div>
       </div>
 
     </main>
 
   </div>
 
+  <!-- پاپ‌آپ توضیحات مهارت‌ها -->
+  <div class="modal-overlay" id="skillModal" onclick="closeModalOnOverlay(event)">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeSkillModal()">
+        <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+      </button>
+
+      <div class="modal-icon-badge" id="modalIcon">
+        <i data-lucide="info"></i>
+      </div>
+
+      <h3 class="modal-title" id="modalTitle">عنوان خدمت</h3>
+      <p class="modal-desc" id="modalDesc">توضیحات کوتاه تخصصی.</p>
+      
+      <div class="modal-details" id="modalBenefit">
+        مزیت برای سازمان
+      </div>
+    </div>
+  </div>
+
   <script>
     lucide.createIcons();
+
+    const skillData = {
+      infra: {
+        title: 'راه‌اندازی زیرساخت و پسیو شبکه',
+        icon: 'network',
+        desc: 'کابل‌کشی استاندارد ساختاریافته (Cat6/Fiber)، آرایش استاندارد رک‌ها، پچ‌پنل‌ها و ایجاد بستر فیزیکی پایدار با کمترین افت سیگنال.',
+        benefit: 'نتیجه: حذف کامل قطعی‌ها و بستر مطمئن برای ارتقا در آینده.'
+      },
+      routing: {
+        title: 'کانفیگ پیشرفته سوئیچینگ و روتینگ',
+        icon: 'git-branch',
+        desc: 'طراحی VLAN، روتینگ بین شعب، اولویت‌بندی ترافیک و جلوگیری از لوپ با تجهیزات سیسکو (Cisco) و میکروتیک (MikroTik).',
+        benefit: 'نتیجه: افزایش چشمگیر سرعت انتقال دیتا و ایزوله‌سازی بخش‌ها.'
+      },
+      firewall: {
+        title: 'امنیت شبکه و فایروال (UTM/NGFW)',
+        icon: 'shield-check',
+        desc: 'کانفیگ فایروال‌های فورتی‌گت (FortiGate) و میکروتیک، بستن پورت‌های ناامن، راه‌اندازی VPN امن برای ارتباط راه دور.',
+        benefit: 'نتیجه: دفع حملات سایبری و مسدودسازی نفوذهای احتمالی.'
+      },
+      storage: {
+        title: 'راهکارهای استوریج و پشتیبان‌گیری',
+        icon: 'hard-drive',
+        desc: 'راه‌اندازی استوریج‌های سازمانی، کانفیگ ماشین‌های مجازی و پلن بکاپ‌گیری خودکار بدون وقفه کاری با Veeam.',
+        benefit: 'نتیجه: تضمین بازگشت اطلاعات حیاتی در کوتاه‌ترین زمان.'
+      },
+      voip: {
+        title: 'مراکز تلفنی نوین VoIP و سانترال ابری',
+        icon: 'phone-forwarded',
+        desc: 'راه‌اندازی تلفن‌های ویپ بر پایه Asterisk و Issabel، راه‌اندازی منشی گویا، ضبط مکالمات و صف‌های تماس هوشمند.',
+        benefit: 'نتیجه: کاهش هزینه‌های تلفن و پایش رضایت مشتریان.'
+      },
+      animation: {
+        title: 'طراحی انیمیشن‌های ۲D و ۳D',
+        icon: 'video',
+        desc: 'تولید موشن‌گرافیک و انیمیشن‌های معرفی محصول به کمک ابزارهای مدرن رندر و هوش مصنوعی.',
+        benefit: 'نتیجه: درک سریع خدمات پیچیده توسط مشتری و ماندگاری در ذهن.'
+      },
+      teaser: {
+        title: 'تدوین تیزرهای تبلیغاتی و معرفی محصول',
+        icon: 'clapperboard',
+        desc: 'ساخت ویدیوهای کوتاه تبلیغاتی با ریتم جذاب، رنگ‌بندی استاندارد و خروجی مناسب شبکه‌های اجتماعی.',
+        benefit: 'نتیجه: افزایش نرخ تبدیل بازدیدکنندگان به مشتریان وفادار.'
+      },
+      logo: {
+        title: 'طراحی لوگو و هویت بصری مدرن',
+        icon: 'palette',
+        desc: 'خلق نشانه‌های مینیمال و پالت رنگی هماهنگ برای سازمان همراه با کاتالوگ هویتی.',
+        benefit: 'نتیجه: ایجاد حس اعتماد و وجهه شرکتی معتبر.'
+      },
+      'ai-art': {
+        title: 'خلق تصاویر اختصاصی با ابزارهای AI',
+        icon: 'sparkles',
+        desc: 'تولید تصاویر منحصربه‌فرد برای وب و شبکه‌های اجتماعی با پرامپت‌نویسی حرفه‌ای در Midjourney و DALL-E.',
+        benefit: 'نتیجه: حذف هزینه‌های سنگین عکاسی و سرعت تحویل بالا.'
+      },
+      copywriting: {
+        title: 'تولید محتوای متنی تخصصی و سئو',
+        icon: 'file-text',
+        desc: 'نگارش مقالات تخصصی و متون متقاعدکننده منطبق بر آخرین استانداردهای سئو گوگل.',
+        benefit: 'نتیجه: رشد طبیعی ورودی سایت از جستجوهای ارگانیک گوگل.'
+      }
+    };
+
+    function openSkillModal(skillKey) {
+      const data = skillData[skillKey];
+      if (!data) return;
+
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalDesc').innerText = data.desc;
+      document.getElementById('modalBenefit').innerText = data.benefit;
+      
+      const iconContainer = document.getElementById('modalIcon');
+      iconContainer.innerHTML = `<i data-lucide="${data.icon}"></i>`;
+      lucide.createIcons();
+
+      const modal = document.getElementById('skillModal');
+      modal.classList.add('active');
+    }
+
+    function closeSkillModal() {
+      const modal = document.getElementById('skillModal');
+      modal.classList.remove('active');
+    }
+
+    function closeModalOnOverlay(e) {
+      if (e.target.id === 'skillModal') {
+        closeSkillModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeSkillModal();
+    });
 
     function downloadVCard() {
       const vCardData = [
         'BEGIN:VCARD',
         'VERSION:3.0',
-        'FN;CHARSET=UTF-8:مهندس سهرابی (تیم فنی و اتوماسیون)',
-        'N;CHARSET=UTF-8:سهرابی;مهندس;;;',
-        'ORG;CHARSET=UTF-8:تیم مهندسی IT و هوش مصنوعی',
-        'TITLE;CHARSET=UTF-8:مدیر فنی و اتوماسیون',
+        'FN;CHARSET=UTF-8:آقای مهندس اشترخانی  (تیم فنی و اتوماسیون)',
+        'N;CHARSET=UTF-8:اشترخانی;مهندس;;;',
+        'TITLE;CHARSET=UTF-8:نماینده ارشد فنی و توسعه زیرساخت',
         'TEL;TYPE=CELL,VOICE:09120000000',
         'EMAIL;TYPE=WORK:contact@yourcompany.ir',
         'END:VCARD'
@@ -623,7 +748,7 @@
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', 'contact.vcf');
+      link.setAttribute('download', 'Engineer-Sohrabi.vcf');
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -631,3 +756,4 @@
   </script>
 </body>
 </html>
+
