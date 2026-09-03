@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>آقای مهندس اشترخانی | راه‌کارهای زیرساخت IT و هوش مصنوعی</title>
+  <title>مهندس سهرابی | راه‌کارهای زیرساخت IT و هوش مصنوعی</title>
   
   <!-- فونت وزیرمتن -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,13 +16,13 @@
   <style>
     :root {
       --bg-gradient: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 65%, #0b0f19 100%);
-      --card-bg: rgba(30, 41, 59, 0.75);
-      --card-inner: rgba(51, 65, 85, 0.45);
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-inner: rgba(51, 65, 85, 0.35);
       --card-border: rgba(148, 163, 184, 0.15);
-      --card-border-hover: rgba(56, 189, 248, 0.4);
       --primary: #38bdf8;
-      --secondary: #a855f7;
-      --accent: #10b981;
+      --secondary: #c084fc;
+      --secondary-glow: rgba(192, 132, 252, 0.3);
+      --primary-glow: rgba(56, 189, 248, 0.3);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --text-sub: #cbd5e1;
@@ -126,7 +126,7 @@
       100% { width: 22px; height: 22px; opacity: 0; }
     }
 
-    /* سایدبار اطلاعات مهندس */
+    /* سایدبار اطلاعات */
     .sidebar-col {
       display: flex;
       flex-direction: column;
@@ -222,7 +222,11 @@
       text-decoration: none;
       cursor: pointer;
       border: none;
-      transition: 0.2s;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
     }
 
     .btn-primary {
@@ -230,11 +234,19 @@
       color: #ffffff;
       box-shadow: 0 4px 15px rgba(14, 165, 233, 0.35);
     }
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
+      transform: translateY(-2px);
+    }
 
     .btn-vcard {
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--card-border);
       color: var(--text-main);
+    }
+    .btn-vcard:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
     }
 
     /* ستون محتوا */
@@ -308,15 +320,17 @@
     .panel-chips {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 9px;
     }
 
+    /* انیمیشن و برجستگی جذاب دکمه‌ها در هاور و کلیک (3D Pop Micro-interaction) */
     .skill-interactive-btn {
+      position: relative;
       background: var(--card-inner);
       border: 1px solid var(--card-border);
       color: var(--text-sub);
-      padding: 10px 12px;
-      border-radius: 12px;
+      padding: 11px 14px;
+      border-radius: 14px;
       font-size: 0.82rem;
       font-weight: 500;
       display: flex;
@@ -326,6 +340,52 @@
       text-align: right;
       width: 100%;
       line-height: 1.4;
+      overflow: hidden;
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.22s ease,
+                  border-color 0.22s ease,
+                  background-color 0.22s ease;
+    }
+
+    /* افکت شاین نوری متحرک */
+    .skill-interactive-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.6s ease;
+    }
+
+    .skill-interactive-btn:hover::after {
+      left: 150%;
+    }
+
+    /* حالت هاور برای پنل IT */
+    .it-panel .skill-interactive-btn:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.45);
+      color: #ffffff;
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: 0 8px 18px -4px var(--primary-glow);
+    }
+
+    /* حالت هاور برای پنل AI */
+    .ai-panel .skill-interactive-btn:hover {
+      background: rgba(192, 132, 252, 0.12);
+      border-color: rgba(192, 132, 252, 0.45);
+      color: #ffffff;
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: 0 8px 18px -4px var(--secondary-glow);
+    }
+
+    /* فشرده‌شدن حین کلیک */
+    .skill-interactive-btn:active {
+      transform: translateY(0px) scale(0.97) !important;
+      box-shadow: none !important;
     }
 
     .skill-label {
@@ -339,18 +399,25 @@
       opacity: 0.8;
       display: flex;
       align-items: center;
+      transition: transform 0.2s ease, color 0.2s ease;
     }
 
-    /* پاپ‌آپ مودال (Modal) */
+    .skill-interactive-btn:hover .hint-click {
+      transform: translateX(-4px);
+      color: #ffffff;
+      opacity: 1;
+    }
+
+    /* پاپ‌آپ مودال فوق‌شیشه‌ای و ترنسپرنت (Ultra Glassmorphism) */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(11, 15, 25, 0.8);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(7, 11, 20, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -358,7 +425,7 @@
       z-index: 9999;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.25s ease;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
     }
 
     .modal-overlay.active {
@@ -367,14 +434,62 @@
     }
 
     .modal-box {
-      background: #1e293b;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-radius: 24px;
       width: 100%;
       max-width: 440px;
-      padding: 22px;
+      padding: 24px;
       position: relative;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      transform: scale(0.85) translateY(24px);
+      opacity: 0;
+      transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    /* تم آبی پاپ‌آپ */
+    .modal-box.theme-it {
+      border-color: rgba(56, 189, 248, 0.35);
+      box-shadow: 0 25px 50px -10px rgba(56, 189, 248, 0.25), inset 0 1px 1px rgba(56, 189, 248, 0.3);
+    }
+    .modal-box.theme-it .modal-icon-badge {
+      background: rgba(56, 189, 248, 0.16);
+      color: var(--primary);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+    .modal-box.theme-it .modal-details {
+      border-right-color: var(--primary);
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.08);
+      border-top: 1px solid rgba(56, 189, 248, 0.12);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.12);
+      border-left: 1px solid rgba(56, 189, 248, 0.12);
+    }
+
+    /* تم بنفش پاپ‌آپ */
+    .modal-box.theme-ai {
+      border-color: rgba(192, 132, 252, 0.35);
+      box-shadow: 0 25px 50px -10px rgba(192, 132, 252, 0.25), inset 0 1px 1px rgba(192, 132, 252, 0.3);
+    }
+    .modal-box.theme-ai .modal-icon-badge {
+      background: rgba(192, 132, 252, 0.16);
+      color: var(--secondary);
+      border: 1px solid rgba(192, 132, 252, 0.25);
+    }
+    .modal-box.theme-ai .modal-details {
+      border-right-color: var(--secondary);
+      color: var(--secondary);
+      background: rgba(192, 132, 252, 0.08);
+      border-top: 1px solid rgba(192, 132, 252, 0.12);
+      border-bottom: 1px solid rgba(192, 132, 252, 0.12);
+      border-left: 1px solid rgba(192, 132, 252, 0.12);
     }
 
     .modal-close-btn {
@@ -382,53 +497,60 @@
       top: 14px;
       left: 14px;
       background: rgba(255, 255, 255, 0.08);
-      border: none;
-      width: 32px;
-      height: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       color: var(--text-muted);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      transition: 0.2s;
+    }
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      transform: rotate(90deg);
     }
 
     .modal-icon-badge {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--primary);
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
     }
 
     .modal-title {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 800;
       color: #ffffff;
       margin-bottom: 8px;
     }
 
     .modal-desc {
-      font-size: 0.86rem;
-      line-height: 1.7;
+      font-size: 0.88rem;
+      line-height: 1.75;
       color: var(--text-sub);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .modal-details {
-      background: rgba(15, 23, 42, 0.6);
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-size: 0.8rem;
-      color: var(--primary);
-      border-right: 3px solid var(--primary);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      border-right: 3.5px solid;
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
     }
 
-    /* ریسپانسیو اختصاصی موبایل */
+    /* ریسپانسیو موبایل */
     @media (max-width: 860px) {
       .main-wrapper {
         grid-template-columns: 1fr;
@@ -447,15 +569,15 @@
 
   <div class="main-wrapper">
     
-    <!-- پنل سایدبار: مشخصات آقای مهندس اشترخانی -->
+    <!-- پنل سایدبار: مشخصات مهندس سهرابی -->
     <aside class="sidebar-col">
       <div class="glass-card profile-card">
         
         <div class="avatar-container">
-          <img src="photo_2025-10-05_20-08-20.jpg" alt="آقای مهندس اشترخانی" class="avatar-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&q=80'">
+          <img src="IMG_20260902_150038_981.jpg" alt="مهندس سهرابی" class="avatar-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&q=80'">
         </div>
 
-        <h2 class="rep-name">آقای مهندس اشترخانی</h2>
+        <h2 class="rep-name">مهندس سهرابی</h2>
         <div class="rep-role">نماینده ارشد فنی و توسعه زیرساخت</div>
         
         <p class="rep-bio">
@@ -467,7 +589,10 @@
             <i data-lucide="phone"></i>
             <span>۰۹۱۲-۰۰۰-۰۰۰۰</span>
           </div>
-         
+          <div class="contact-info-item">
+            <i data-lucide="mail"></i>
+            <span>contact@yourcompany.ir</span>
+          </div>
           <div class="contact-info-item">
             <i data-lucide="map-pin"></i>
             <span>تهران، ایران</span>
@@ -475,7 +600,7 @@
         </div>
 
         <div class="sidebar-actions">
-          <a href="tel:09205054557" class="btn btn-primary">
+          <a href="tel:09120000000" class="btn btn-primary">
             <i data-lucide="phone-call" style="width: 17px; height: 17px;"></i>
             برقراری تماس مستقیم
           </a>
@@ -614,7 +739,7 @@
 
   <!-- پاپ‌آپ توضیحات مهارت‌ها -->
   <div class="modal-overlay" id="skillModal" onclick="closeModalOnOverlay(event)">
-    <div class="modal-box">
+    <div class="modal-box" id="modalBox">
       <button class="modal-close-btn" onclick="closeSkillModal()">
         <i data-lucide="x" style="width: 18px; height: 18px;"></i>
       </button>
@@ -637,60 +762,70 @@
 
     const skillData = {
       infra: {
+        category: 'it',
         title: 'راه‌اندازی زیرساخت و پسیو شبکه',
         icon: 'network',
         desc: 'کابل‌کشی استاندارد ساختاریافته (Cat6/Fiber)، آرایش استاندارد رک‌ها، پچ‌پنل‌ها و ایجاد بستر فیزیکی پایدار با کمترین افت سیگنال.',
         benefit: 'نتیجه: حذف کامل قطعی‌ها و بستر مطمئن برای ارتقا در آینده.'
       },
       routing: {
+        category: 'it',
         title: 'کانفیگ پیشرفته سوئیچینگ و روتینگ',
         icon: 'git-branch',
         desc: 'طراحی VLAN، روتینگ بین شعب، اولویت‌بندی ترافیک و جلوگیری از لوپ با تجهیزات سیسکو (Cisco) و میکروتیک (MikroTik).',
         benefit: 'نتیجه: افزایش چشمگیر سرعت انتقال دیتا و ایزوله‌سازی بخش‌ها.'
       },
       firewall: {
+        category: 'it',
         title: 'امنیت شبکه و فایروال (UTM/NGFW)',
         icon: 'shield-check',
         desc: 'کانفیگ فایروال‌های فورتی‌گت (FortiGate) و میکروتیک، بستن پورت‌های ناامن، راه‌اندازی VPN امن برای ارتباط راه دور.',
         benefit: 'نتیجه: دفع حملات سایبری و مسدودسازی نفوذهای احتمالی.'
       },
       storage: {
+        category: 'it',
         title: 'راهکارهای استوریج و پشتیبان‌گیری',
         icon: 'hard-drive',
         desc: 'راه‌اندازی استوریج‌های سازمانی، کانفیگ ماشین‌های مجازی و پلن بکاپ‌گیری خودکار بدون وقفه کاری با Veeam.',
         benefit: 'نتیجه: تضمین بازگشت اطلاعات حیاتی در کوتاه‌ترین زمان.'
       },
       voip: {
+        category: 'it',
         title: 'مراکز تلفنی نوین VoIP و سانترال ابری',
         icon: 'phone-forwarded',
         desc: 'راه‌اندازی تلفن‌های ویپ بر پایه Asterisk و Issabel، راه‌اندازی منشی گویا، ضبط مکالمات و صف‌های تماس هوشمند.',
         benefit: 'نتیجه: کاهش هزینه‌های تلفن و پایش رضایت مشتریان.'
       },
       animation: {
+        category: 'ai',
         title: 'طراحی انیمیشن‌های ۲D و ۳D',
         icon: 'video',
         desc: 'تولید موشن‌گرافیک و انیمیشن‌های معرفی محصول به کمک ابزارهای مدرن رندر و هوش مصنوعی.',
         benefit: 'نتیجه: درک سریع خدمات پیچیده توسط مشتری و ماندگاری در ذهن.'
       },
       teaser: {
+        category: 'ai',
         title: 'تدوین تیزرهای تبلیغاتی و معرفی محصول',
         icon: 'clapperboard',
         desc: 'ساخت ویدیوهای کوتاه تبلیغاتی با ریتم جذاب، رنگ‌بندی استاندارد و خروجی مناسب شبکه‌های اجتماعی.',
         benefit: 'نتیجه: افزایش نرخ تبدیل بازدیدکنندگان به مشتریان وفادار.'
       },
       logo: {
+        category: 'ai',
         title: 'طراحی لوگو و هویت بصری مدرن',
         icon: 'palette',
         desc: 'خلق نشانه‌های مینیمال و پالت رنگی هماهنگ برای سازمان همراه با کاتالوگ هویتی.',
         benefit: 'نتیجه: ایجاد حس اعتماد و وجهه شرکتی معتبر.'
       },
       'ai-art': {
+        category: 'ai',
         title: 'خلق تصاویر اختصاصی با ابزارهای AI',
         icon: 'sparkles',
         desc: 'تولید تصاویر منحصربه‌فرد برای وب و شبکه‌های اجتماعی با پرامپت‌نویسی حرفه‌ای در Midjourney و DALL-E.',
         benefit: 'نتیجه: حذف هزینه‌های سنگین عکاسی و سرعت تحویل بالا.'
       },
       copywriting: {
+        category: 'ai',
         title: 'تولید محتوای متنی تخصصی و سئو',
         icon: 'file-text',
         desc: 'نگارش مقالات تخصصی و متون متقاعدکننده منطبق بر آخرین استانداردهای سئو گوگل.',
@@ -701,6 +836,17 @@
     function openSkillModal(skillKey) {
       const data = skillData[skillKey];
       if (!data) return;
+
+      const modalBox = document.getElementById('modalBox');
+      
+      // تغییر داینامیک تم رنگی بر اساس دسته‌بندی
+      if (data.category === 'ai') {
+        modalBox.classList.remove('theme-it');
+        modalBox.classList.add('theme-ai');
+      } else {
+        modalBox.classList.remove('theme-ai');
+        modalBox.classList.add('theme-it');
+      }
 
       document.getElementById('modalTitle').innerText = data.title;
       document.getElementById('modalDesc').innerText = data.desc;
@@ -733,10 +879,10 @@
       const vCardData = [
         'BEGIN:VCARD',
         'VERSION:3.0',
-        'FN;CHARSET=UTF-8:آقای مهندس اشترخانی  (تیم فنی و اتوماسیون)',
-        'N;CHARSET=UTF-8:اشترخانی;مهندس;;;',
+        'FN;CHARSET=UTF-8:مهندس سهرابی (تیم فنی و اتوماسیون)',
+        'N;CHARSET=UTF-8:سهرابی;مهندس;;;',
         'TITLE;CHARSET=UTF-8:نماینده ارشد فنی و توسعه زیرساخت',
-        'TEL;TYPE=CELL,VOICE:09205054557',
+        'TEL;TYPE=CELL,VOICE:09120000000',
         'EMAIL;TYPE=WORK:contact@yourcompany.ir',
         'END:VCARD'
       ].join('\r\n');
@@ -753,4 +899,3 @@
   </script>
 </body>
 </html>
-
